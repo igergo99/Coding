@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .items {
+            border: 2px solid grey;
+            margin: 10px;
+            background-color: darkkhaki;
+            display: inline-block;
+        }
+
+        #webshop {
+            width: 45%;
+            border: 2px solid black;
+            margin-right: 15px;
+
+        }
+
+        #webcart {
+            width: 45%;
+            border: 2px solid black;
+            margin-left: 15px;
+
+        }
+
+        #container {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="webshop">
+
+        </div>
+        <div id="webcart">
+            <h1>Kosár tartalma:</h1>
+        </div>
+    </div>
+
+
+    <script>
+        class Webcart {
+            constructor(termekNev, termekId, db, nettoAr, afa) {
+                this.itemName = termekNev;
+                this.termekId = termekId;
+                this.quantity = db;
+                this.netPrice = nettoAr;
+                this.vat = afa;
+            };
+            quantityModder(newQuantity) {
+                if (newQuantity > 0) {
+                    this.quantity = newQuantity;
+                } else { alert('Adjon meg egy valós értéket!') }
+            };
+            grossCalculator() {
+
+                return (this.netPrice + this.netPrice * this.vat) * this.quantity
+
+            };
+        };
+
+        const firstItem = new Webcart('Autó', 0, 3, 450, 0.27);
+        const secondItem = new Webcart('Repülő', 1, 15, 600, 0.27);
+        const thirdItem = new Webcart('Hajó', 2, 34, 1200, 0.27);
+        const fourthItem = new Webcart('Mackó', 3, 12, 523, 0.27);
+        const fifthItem = new Webcart('Puzzle', 4, 35, 890, 0.27);
+        console.log(firstItem);
+        // firstItem.quantityModder(5);
+        console.log(firstItem.grossCalculator())
+
+
+        const dataBase = [firstItem, secondItem, thirdItem, fourthItem, fifthItem]
+        const databaseRender = () => {
+            for (let element of dataBase) {
+                let itemDiv = document.createElement('div');
+                let changeButton = document.createElement('button');
+                let cartButton = document.createElement('button');
+                changeButton.innerText = 'Módosítás';
+                cartButton.innerText = 'Kosárba';
+                let pElement = document.createElement('p');
+                pElement.innerHTML = `Terméknév: ${element.itemName}<br>Darabszám: ${element.quantity}<br>Nettó ár: ${element.netPrice}<br>Adó: ${element.vat}`;
+                itemDiv.append(pElement, changeButton, cartButton);
+                document.getElementById('webshop').append(itemDiv);
+                itemDiv.classList.add('items')
+
+
+                changeButton.addEventListener('click', (event) => {
+                    let newQuan = prompt('Adja meg a kívánt mennyiséget!');
+                    element.quantityModder(newQuan);
+
+                    event.target.previousSibling.innerHTML = `Terméknév: ${element.itemName}<br>Darabszám: ${element.quantity}<br>Nettó ár: ${element.netPrice}<br>Adó: ${element.vat}`;
+                });
+                cartButton.addEventListener('click', (event) => {
+                    event.target.parentNode.classList.remove('items')
+                    event.target.parentNode.innerHTML = '';
+                    let webCartDiv = document.createElement('div');
+                    let webCartChangeButton = document.createElement('button');
+                    webCartChangeButton.innerText = 'Módosítás';
+                    let webCartPElement = document.createElement('p');
+                    let grossValue = element.grossCalculator();
+                    webCartPElement.innerHTML = `Terméknév: ${element.itemName}<br>Darabszám: ${element.quantity}<br>Nettó ár: ${element.netPrice}<br>Adó: ${element.vat}<br>Áfás ár: ${element.grossCalculator()}`;
+                    webCartDiv.append(webCartPElement, webCartChangeButton);
+                    webCartDiv.classList.add('items')
+                    document.getElementById('webcart').append(webCartDiv)
+                    webCartChangeButton.addEventListener('click', (event) => {
+                        let newQuantity = prompt('Adja meg a kívánt mennyiséget!');
+                        element.quantityModder(newQuantity);
+
+                        event.target.previousSibling.innerHTML = `Terméknév: ${element.itemName}<br>Darabszám: ${element.quantity}<br>Nettó ár: ${element.netPrice}<br>Adó: ${element.vat}<br>Áfás ár: ${element.grossCalculator()}`;
+                    })
+                })
+            }
+        }
+        databaseRender();
+    </script>
+</body>
+
+</html>

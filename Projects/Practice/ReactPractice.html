@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script  src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script  src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+</head>
+<body>
+    
+    <div id="article"></div>
+    <div id="paragraphs"></div>
+    <script type="text/babel">
+        const article=(
+            <React.Fragment>
+                <h1>Cím</h1>
+                <img src="https://placekitten.com/200/200" />
+                <button />
+            </React.Fragment>
+        );
+        
+        ReactDOM.render(article, document.querySelector("#article"))
+
+        let a =1;
+        let b=4;
+
+        ReactDOM.render(<div>{a*b}</div>, document.querySelector("#paragraphs"))
+
+
+        const allNumbers=[1,2,3,4,5,6,7,8,9,10];
+        let jsxArr=[];
+        for(let i=0;i<allNumbers.length;i++){
+            if(allNumbers[i]%2===0){
+                jsxArr.push(<div key={i}>{allNumbers[i]}</div>)
+            }
+        }
+
+        ReactDOM.render(jsxArr,document.querySelector("#paragraphs"))
+    </script>
+</body>
+</html>

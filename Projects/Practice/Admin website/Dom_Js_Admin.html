@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="Dom_js_admin.js"></script>
+    <link rel="stylesheet" href="Dom_JS_Admin.css">
+</head>
+
+<body>
+    <div id="header">
+        <h1>Admin menu</h1>
+    </div>
+    <div id="menu">
+        <ul>
+            <li id="statMenu">Statisztika</li>
+            <li id="usersMenu">Felhasználók</li>
+            <li id="galleryMenu">Gallarea</li>
+        </ul>
+    </div>
+    <br>
+    <div id=form class="hiddenClass">
+        <form action="">
+            Full Name:<input type="text" name="fullname" id="fullNameInput">
+            Username:<input type="text" name="username" id="userNameInput">
+            E-mail:<input type="text" name="email" id="emailInput">
+            <button type="button" id="saveButton">Mentés</button>
+        </form>
+    </div>
+    <div id="statistics" class="hiddenClass"></div>
+    <div id="users" class="hiddenClass"></div>
+    <div id="gallarea" class="hiddenClass">
+        <form action="" id="galleryForm" name="gallerysave">
+            <select name="userSelector" id="gallerySelect">
+            </select>
+            <button type="submit" id="gallerysave" class="invisible">Save</button>
+        </form>
+        <table id="galleryTable">
+            <tr>
+                <td><img src="https://randomwordgenerator.com/img/picture-generator/54e7d4434856ae14f1dc8460962e33791c3ad6e04e507441722a72dc9f4ecd_640.jpg"
+                        alt="" class="photos"></td>
+                <td><img src="https://randomwordgenerator.com/img/picture-generator/52e1d3424e57ab14f1dc8460962e33791c3ad6e04e5077497c2a7cd49445c3_640.jpg"
+                        alt="" class="photos"></td>
+                <td><img src="https://randomwordgenerator.com/img/picture-generator/50e2dc454d57b10ff3d8992cc12c30771037dbf852547848702e7add944d_640.jpg"
+                        alt="" class="photos"></td>
+            </tr>
+            <tr>
+                <td><img src="https://randomwordgenerator.com/img/picture-generator/car-53875_640.jpg" alt=""
+                        class="photos"></td>
+                <td><img src="https://randomwordgenerator.com/img/picture-generator/52e9d5444351ab14f1dc8460962e33791c3ad6e04e50744172277fd0944ccd_640.jpg"
+                        alt="" class="photos"></td>
+                <td><img src="https://randomwordgenerator.com/img/picture-generator/53e0d0454c56aa14f1dc8460962e33791c3ad6e04e507441722978d6944fc3_640.jpg"
+                        alt="" class="photos"></td>
+            </tr>
+            <tr>
+                <td><img src="https://randomwordgenerator.com/img/picture-generator/52e3d6434253ad14f1dc8460962e33791c3ad6e04e507440742a7ad6954cc4_640.jpg"
+                        alt="" class="photos"></td>
+                <td><img src="https://randomwordgenerator.com/img/picture-generator/54e7d7474856ad14f1dc8460962e33791c3ad6e04e507440742e7dd5954cc2_640.jpg"
+                        alt="" class="photos"></td>
+                <td><img src="https://randomwordgenerator.com/img/picture-generator/5ee2d3424a57b10ff3d8992cc12c30771037dbf85254794e722679d7934d_640.jpg"
+                        alt="" class="photos"></td>
+            </tr>
+        </table>
+    </div>
+
+
+
+</body>
+
+</html>

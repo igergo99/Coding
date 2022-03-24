@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.container {
+  border: 2px solid black;
+  width: 404px;
+  height: 504px;
+  display: flex;
+  flex-wrap: wrap;
+}
+button {
+  width: 100px;
+  height: 100px;
+}
+.display {
+  width: 400px;
+  height: 100px;
+}

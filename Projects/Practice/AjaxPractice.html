@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        function ajaxRequester() {
+            if (window.XMLHttpRequest) {
+                const method = 'GET';
+                const url = 'https://eloquent-leakey-dcde05.netlify.app/xml_pelda_02.xml';
+                const ajaxEnable = true;
+
+                const xhrRequest = new XMLHttpRequest();
+
+                xhrRequest.open(method, url, ajaxEnable);
+
+
+                xhrRequest.onload = function () {
+                    console.log(xhrRequest.responseXML)
+                    const divElem = document.querySelector('#divElem');
+                    divElem.append(xhrRequest.responseXML.querySelector('news'));
+
+                };
+                xhrRequest.send();
+            }
+        };
+        ajaxRequester()
+    </script>
+</head>
+
+<body>
+    <div id="divElem"></div>
+</body>
+
+</html>

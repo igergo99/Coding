@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 100vh;
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+            background-image: url(https://funzine.hu/wp-content/uploads/2021/11/cinemacity_Mammut_I_terem2-scaled.jpg);
+        }
+
+        #container {
+            display: flex;
+            background-color: lemonchiffon;
+            width: 90%;
+            margin: 5%;
+            justify-content: space-evenly;
+            height: 70%;
+            border: 2px solid gray;
+        }
+
+        #leftside {
+            background-color: lightskyblue;
+            margin: 2%;
+            width: 30%;
+            text-align: center;
+            border-radius: 5%;
+            border: 2px solid gray;
+        }
+
+        #leftside input {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        #rightside {
+            background-color: lightskyblue;
+            margin: 2%;
+            border-radius: 5%;
+            border: 2px solid gray;
+        }
+
+        .available {
+            width: 30px;
+            height: 30px;
+            border: 2px solid black;
+            background-color: forestgreen;
+        }
+
+        .available2 {
+            width: 30px;
+            height: 30px;
+            border: 2px solid black;
+            background-color: forestgreen;
+            pointer-events: none;
+        }
+
+        .unavailable {
+            width: 30px;
+            height: 30px;
+            border: 2px solid black;
+            background-color: crimson;
+            pointer-events: none;
+        }
+
+        .chosen {
+            width: 30px;
+            height: 30px;
+            border: 2px solid black;
+            background-color: rgb(216, 190, 41);
+        }
+
+        #tableDiv {
+            max-width: 360px;
+            margin: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        .img {
+            margin-left: 80px;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="leftside">
+            <div id="leftsidetext">
+                <form action="" id="Form">
+                    <input type="text" placeholder="Name:" id="nameInput"><br>
+                    <input type="email" placeholder="E-mail:" id="emailInput"><br>
+                    <input type="tel" placeholder="Phone:" id="telInput"><br>
+                    <button type="submit">Next</button>
+                </form>
+            </div>
+        </div>
+        <div id="rightside">
+            <H1>Add meg az adataidat a foglaláshoz!</H1>
+        </div>
+        <div id="tableDiv">
+            <table id="table">
+
+            </table>
+        </div>
+    </div>
+
+
+
+    <script>
+
+        const dataBase = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]];
+
+
+
+
+        const price = 1500;
+        const nameInput = document.querySelector('#nameInput');
+        const emailInput = document.querySelector('#emailInput');
+        const telInput = document.querySelector('#telInput');
+        const form = document.querySelector("#Form");
+        const formContainer = document.querySelector("#leftsidetext");
+        const rightSideDiv = document.querySelector("#rightside");
+        form.addEventListener('submit', (event) => {
+
+
+            event.preventDefault();
+            if (nameInput.value !== "" && emailInput.value !== "" && telInput.value !== "") {
+                formContainer.innerHTML = "";
+                rightSideDiv.innerHTML = "";
+                document.getElementById('leftsidetext').innerHTML = `<h1>A folytatáshoz válassz ülőhelyet!</h1>`;
+
+
+            } else {
+                alert("Kérem minden mezőt töltsön ki!!");
+            };
+            let unavailableSeats = [];
+            let unclickableSeats = [];
+            const tableDiv = document.getElementById('tableDiv');
+            const table = document.getElementById('table')
+            const reservedSeats = document.createElement('p')
+            reservedSeats.innerHTML = 'Általad választott székek: '
+            let chosenSeats = [];
+            const submitButton = document.createElement('button')
+            submitButton.innerText = 'Foglalás';
+            const moziVaszon = document.createElement('img');
+            moziVaszon.src = "/Users/gergoiglodi/Desktop/Coding/Projects/Practice/mozi-1.png"
+            tableDiv.append(moziVaszon);
+            moziVaszon.classList.add('img')
+            tableDiv.append(table)
+            tableDiv.append(reservedSeats)
+            tableDiv.append(submitButton)
+            function roomGenerator(arr) {
+                let eventTarget = null;
+                for (let index = 0; index < arr.length; index++) {
+                    let tr = document.createElement('tr')
+                    table.append(tr);
+                    tr.classList.add(`${index + 1}`)
+
+                    for (let i = 0; i < arr[index].length; i++) {
+                        let td = document.createElement('td');
+                        let tdSeat = document.createElement('div');
+                        // tdSeat.innerText = `${index + 1}/${i + 1}.`
+
+
+
+                        tr.append(td)
+                        td.append(tdSeat)
+                        tdSeat.classList.add('available')
+                        tdSeat.classList.add(`seat${index + 1}${i + 1}`)
+
+                        tdSeat.addEventListener('click', (event) => {
+
+                            if (!chosenSeats.includes(` ${index + 1}. sor, ${i + 1}. szék `)) {
+                                chosenSeats.push(` ${index + 1}. sor, ${i + 1}. szék `)
+                            }
+
+                            if (eventTarget !== event.target) {
+                                tdSeat.classList.remove('available')
+                                tdSeat.classList.add('chosen')
+                                reservedSeats.innerHTML = `Általad válaszott székek:${[...chosenSeats]}`;
+
+                                unavailableSeats.push(event.target)
+
+                                console.log(eventTarget, event.target)
+                            }
+
+                            eventTarget = event.target
+
+
+
+                        });
+
+
+                    }
+
+                }
+
+            }
+            roomGenerator(dataBase)
+            rightSideDiv.append(tableDiv);
+            let unavailableTd1 = document.querySelector('.seat16');
+            let unavailableTd2 = document.querySelector('.seat17');
+            let unavailableTd3 = document.querySelector('.seat26');
+            let unavailableTd4 = document.querySelector('.seat27');
+            let unavailableTd5 = document.querySelector('.seat36');
+            let unavailableTd6 = document.querySelector('.seat37');
+
+            unavailableTd1.classList.add('unavailable');
+            unavailableTd2.classList.add('unavailable');
+            unavailableTd3.classList.add('unavailable');
+            unavailableTd4.classList.add('unavailable');
+            unavailableTd5.classList.add('unavailable');
+            unavailableTd6.classList.add('unavailable');
+            submitButton.addEventListener('click', (event) => {
+                for (let a = 0; a < unavailableSeats.length; a++) {
+                    unavailableSeats[a].classList.remove('chosen')
+                    unavailableSeats[a].classList.add('unavailable');
+                }
+                let tdDivs = document.querySelectorAll('tr td div')
+                reservedSeats.innerHTML = "";
+                document.getElementById("leftsidetext").innerHTML = `<strong>Név: ${nameInput.value}</strong><br><strong>E-mail: ${emailInput.value}</strong><br><strong>Tel.: ${telInput.value}</strong><br><strong>Lefoglalt székek: ${chosenSeats}</strong><br><strong>Végső ár: ${chosenSeats.length * price} HUF</strong><br>`;
+                submitButton.disabled = true;
+                for (let k = 0; k < tdDivs.length; k++) {
+                    if (!tdDivs[k].classList.contains('unavailable')) {
+                        tdDivs[k].classList.add('available2')
+                    }
+
+                }
+            });
+
+
+        });
+
+    </script>
+</body>
+
+</html>

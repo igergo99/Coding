@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1 id="h1">Admin Login</h1>
+        <form action="">
+            <input type="text" name="username" id="username" placeholder="Username">
+            <input type="password" name="password" id="password" placeholder="Password">
+            <button type="button">Login</button>
+        </form>
+    </div>
+    <script>
+        const username = document.getElementById('username');
+        const password = document.getElementById('password');
+        const formButton = document.querySelector("button");
+        formButton.addEventListener("click", function () {
+            if (username.value === "admin" && password.value === "admin") { location.replace("/Users/gergoiglodi/Desktop/Coding/Coding/Projects/Practice/Admin website/Dom_Js_Admin.html") } else {
+                let h2 = document.createElement("h2");
+                h2.innerText = "Inavild username or password!";
+                let h1 = document.getElementById("h1");
+                h1.after(h2)
+            }
+        });
+    </script>
+</body>
+
+</html>

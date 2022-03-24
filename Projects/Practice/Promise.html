@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let promise1 = new Promise((resolve, reject) => {
+            resolve([1, 2]);
+        })
+
+        promise1.then(value => console.log(value))
+
+
+        let promise2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("hello world")
+            }, 3000)
+        })
+
+        promise2.then(value => console.log(value))
+
+
+        let promise3 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("hello world")
+            }, 3000)
+        })
+
+        function logger(value) {
+            console.log(value);
+            return value
+        }
+        promise3.then(value => logger(value));
+
+
+        let promise4 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve([3, 4])
+            }, 3000)
+        })
+
+        function add(num1, num2) {
+
+            return num1 + num2
+        }
+        promise4.then(value => console.log(add(...value)));
+
+
+
+        let promise5 = new Promise((resolve, reject) => {
+            reject("hiba")
+        })
+
+
+
+        function consoleLogger(promiseInstance) {
+            promiseInstance.then(value => console.log('logger: ', value)).catch(reason => console.log("reason: ", reason))
+        };
+        consoleLogger(promise1);
+        consoleLogger(promise2);
+        consoleLogger(promise5);
+
+
+        let promise6 = new Promise((resolve, reject) => {
+            setTimeout(() => resolve([1, 2, 3]), 5000)
+
+        })
+
+        promise6.then(value => { console.log(value); return value }).then(value => {
+            let newValue = [value[0], value[1]]
+            console.log(newValue); return newValue
+        }).then(value => {
+            let newestValue = [value[0]];
+            console.log(newestValue);
+            return newestValue
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

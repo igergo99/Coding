@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <!-- <form action="" id="form"></form>
+    <button type="submit" id="button">Szubmitálni</button> -->
+
+
+
+    <input type="text" name="" id="secInput" placeholder='Add meg a másodpercet'>
+    <input type="text" name="" id="stringInput" placeholder='Add meg a szöveget'>
+    <button id="startButton">Start</button>
+    <button id="stopbutton">Stop</button>
+
+
+
+    <Script>
+
+        /* function alertUser(str) {
+            alert(str)
+        };
+
+        setTimeout(() => {
+            alertUser("szevasztoooook");
+        }, 10 * 1000) */
+
+
+
+        /* let num = 0;
+        setInterval(function () {
+
+            console.log(num);
+            num++
+        }, 5 * 1000); */
+
+        /* let num = 0;
+        function timer(x) {
+            setTimeout(function () {
+                console.log(num)
+                num++;
+                timer(x += 2)
+            }, x * 1000)
+        };
+        timer(2); */
+
+
+        /* let counter = 5;
+        let form = document.getElementById("form");
+        let button = document.getElementById("button");
+        button.disabled = true;
+        setInterval(() => {
+            if (counter > 0) {
+                console.log(counter)
+                button.innerText = `${counter}`
+                counter--
+                button.disabled = true;
+            }
+
+            if (counter < 1) {
+                button.innerText = 'Szubmitálni';
+                button.disabled = false
+            }
+        }, 1 * 1000); */
+
+
+
+        let secInput = document.getElementById('secInput')
+        let stringInput = document.getElementById('stringInput')
+        let startButton = document.getElementById('startButton')
+        let stopButton = document.getElementById('stopButton')
+
+        startButton.addEventListener('click', (event) => {
+
+            let id = setTimeout(function write() {
+                console.log(stringInput.value)
+                id = setTimeout(write, secInput.value * 1000)
+            }, secInput.value * 1000);
+        });
+
+
+
+
+        /* stopButton.addEventListener('click', (event) => {
+                clearTimeout(timeoutId)
+            }) */
+    </Script>
+</body>
+
+</html>

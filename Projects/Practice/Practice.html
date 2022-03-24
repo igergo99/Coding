@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        let gps = [24.232, 43.222];
+        const [longitude, latidue] = gps;
+        console.log('longitude: ', longitude);
+        console.log('latidue: ', latidue);
+
+
+
+        let arr = [1, 2];
+        [arr[1], arr[0]] = arr;
+
+
+        let ages = [54, 65, 4];
+        let min = Math.min(...ages);
+        console.log(min);
+
+        let [min2] = ages.sort((a, b) => a - b);
+
+
+        let winners = ['Tibor', 'Eszter', 'David', 'Adám', 'Aladar'];
+
+        const fv = ([first, second, third, ...others]) => ({
+            first,
+            second,
+            third,
+            others
+        });
+        console.log(fv(winners))
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

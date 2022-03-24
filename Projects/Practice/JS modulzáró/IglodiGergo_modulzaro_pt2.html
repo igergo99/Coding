@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: space-between;
+            margin: 10%;
+            border: 2px solid red;
+            padding: 50px;
+            border-radius: 15%;
+            width: 500px;
+        }
+
+        #questionContainer {
+            width: 180px;
+        }
+
+        #questionBox {
+            width: 250px;
+            text-align: center;
+
+        }
+
+        .disabledClick {
+            pointer-events: none;
+
+        }
+    </style>
+    <script src="./modulzaropt2.js"></script>
+</head>
+
+<body>
+    <div id="questionContainer">
+        <form action="" id="form">
+            <strong><label for="questionInput">Adj meg egy kérdést!</label></strong>
+            <br>
+            <input type="text" name="" id="questionInput"><br>
+            <label for="answerInput1">Válasz 1</label>
+            <br>
+            <input type="text" name="" id="answerInput1"><br>
+            <label for="answerInput2">Válasz 2</label>
+            <br>
+            <input type="text" name="" id="answerInput2"><br>
+            <label for="answerInput3">Válasz 3</label>
+            <br>
+            <input type="text" name="" id="answerInput3"><br>
+            <label for="correctAnswer">Helyes válasz száma:</label><br>
+            <input type="number" name="" id="correctAnswer"><br>
+            <button type="submit">Mentés</button>
+        </form>
+    </div>
+    <div id="questionBox">
+
+    </div>
+</body>
+
+</html>

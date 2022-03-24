@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        /*  fetch('http://localhost:3000/urls')
+             .then(response => response.json())
+             .then(json => json())
+             .catch(reason => console.log(reason));
+  */
+        let counting = 0
+        function counter() {
+
+            counting++
+            return counting
+        }
+        function saveCounter(count) {
+            fetch('http://localhost:3000/counters', {
+                method: "POST",   /* PUT, PATCH */
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ count: count })
+            })
+                .then(response => response.json())
+                .then(json => console.log(json))
+                .catch(reason => console.log(reason));
+        }
+        counter();
+        saveCounter(counter());
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

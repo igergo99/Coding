@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div>
+        <form action="" id="form">
+            <input type="text" placeholder="Név" id="nameInput">
+            <input type="text" placeholder="E-mail" id="emailInput">
+            <button type="submit" id="submitButton">Hozzáad</button>
+        </form>
+    </div>
+    <div id="data"></div>
+
+
+    <script>
+
+        function getJson() {
+            const method = 'GET';
+            const url = 'http://localhost:3000/users';
+            const ajaxEnable = true;
+            const xhrRequest = new XMLHttpRequest();
+
+            xhrRequest.open(method, url, ajaxEnable);
+            xhrRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xhrRequest.onload = function () {
+                console.log(xhrRequest.responseText)
+                let dataBase = JSON.parse(xhrRequest.responseText)
+                document.getElementById("data").innerHTML = ""
+                dataBase.forEach(element => {
+
+                    document.getElementById("data").append(document.createElement('p').innerHTML = `Név: ${element.name}<br>`, document.createElement('p').innerText = `E-,mail: ${element.email}<br>`)
+
+
+
+                });
+
+
+            };
+            xhrRequest.send();
+
+            // first try
+            //Onloadot meg kell írni mert asyncronban vagyunk
+
+
+            // second try
+
+            /* xhrRequest.responseType = "json";
+            console.log(xhrRequest);
+            // console.log(xhrRequest.responseURL); =>üres string
+            console.log(xhrRequest.response); //=>null */
+
+            // third try
+
+            /* console.log(xhrRequest.response);
+            console.log(JSON.parse(xhrRequest.response)); */
+
+        }
+        getJson()
+
+        function dataBaseAdder() {
+            const method2 = 'POST';
+            const url = 'http://localhost:3000/users';
+            const ajaxEnable = true;
+            const xhrRequest = new XMLHttpRequest();
+            xhrRequest.open(method2, url, ajaxEnable);
+            xhrRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xhrRequest.send(JSON.stringify({ "name": document.getElementById("nameInput").value, "email": document.getElementById("emailInput").value }));
+        }
+        let form = document.getElementById("form")
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            dataBaseAdder()
+            getJson()
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+.invisible{
+    visibility: hidden;
+}
+.visible{
+    visibility: visible;
+    border: 1px solid black;
+    border-radius: 5%;
+    display: inline;
+    position: absolute;
+    top: 25%;
+    left:15%;
+    height: 50%;
+    width: 70%;
+}

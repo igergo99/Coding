@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function divide(osztandó, oszto) {
+            if (isNaN(osztandó)) {
+                throw new Error(`az ${osztandó} paraméter nem megfelelő, így nem tudtam elvégezni a műveletet`)
+            }
+            if (isNaN(oszto)) {
+                throw new Error(`az ${oszto} paraméter nem megfelelő, így nem tudtam elvégezni a műveletet`)
+            }
+            if (oszto === 0) {
+                throw new Error(`Az osztó nem lehet 0!!!`)
+            }
+            return osztandó / oszto
+        };
+
+        /*   try {
+              console.log(divide(10, 5));
+              console.log(divide(10, "abc"));
+  
+          } catch (error) {
+              console.log(error);
+          }; */
+
+
+
+
+        function createItem(firstMaterial, secondMaterial) {
+            if (!firstMaterial || !secondMaterial) {
+                throw new Error('Üres valamelyik rekesz!!!')
+            }
+            if (firstMaterial === secondMaterial) {
+                throw new Error('Ugyanaz az alapanyag!!!')
+            }
+            return `${firstMaterial}+${secondMaterial}-ból készült termék`;
+
+
+
+        };
+        try {
+            console.log(createItem("műanyag", "műanyag"));
+            console.log(createItem("műanyag"));
+            console.log(createItem("műanyag", "papír"));
+        } catch (error) {
+            console.log(error);
+        }
+
+
+
+
+
+        function phoneChecker(number) {
+
+            if (number[0] !== "+") {
+                throw new Error('Nem megfelelő formátum')
+            }
+            if (number.length < 11) {
+                throw new Error('Nincs elég szám!!!')
+            }
+            return true
+        };
+        try {
+            phoneChecker('asdasda')
+        }
+        catch (error) { console.log(error) };
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
