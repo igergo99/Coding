@@ -1,7 +1,9 @@
 .App {
   text-align: center;
 }
-
+.pie-container {
+  height: 300px;
+}
 .button {
   width: 45px;
   height: 45px;
