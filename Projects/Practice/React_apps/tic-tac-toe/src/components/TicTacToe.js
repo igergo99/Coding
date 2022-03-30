@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-const TicTacToe = () => {
-  const [user, setUser] = useState('X');
+const TicTacToe = (props) => {
+  
   const [position, setPosition] = useState(
     [
       [null, null, null],
@@ -8,33 +8,35 @@ const TicTacToe = () => {
       [null, null, null],
     ]
   )
-  const [winner, setWinner] = useState("")
+  
 
   const clickHandler = (rowIndex, columnIndex) => {
     return (event) => {
-      if (!winner) {
+      if (!props.winner) {
         if (!position[rowIndex][columnIndex]) {
-          if (user === "X") {
+          if (props.user === "X") {
             setPosition(
               prev => {
                 const newarr = [...prev]
                 newarr[rowIndex][columnIndex] = "X"
-                
+                console.log(newarr)
                 return newarr
               }
             )
-            setUser("O")
+            
+            props.parentCallback("O")
           }
-          if (user === "O") {
+          if (props.user === "O") {
             setPosition(
               prev => {
                 const newarr = [...prev]
                 newarr[rowIndex][columnIndex] = "O"
-                
+                console.log(newarr)
                 return newarr
               }
             )
-            setUser("X")
+            
+            props.parentCallback("X")
           }
         }
       }
@@ -43,17 +45,17 @@ const TicTacToe = () => {
   useEffect(() => {
     position.map((outeritem, outerindex) => {
       if (outeritem[0] && outeritem[0] === outeritem[1] && outeritem[0] === outeritem[2]) {
-        setWinner(outeritem[0])
+        props.setWinnerCb(outeritem[0])
       }
       outeritem.map((inneritem, innerindex) => {
         if (position[outerindex][innerindex] && position[0][innerindex] === position[1][innerindex] && position[0][innerindex] === position[2][innerindex]) {
-          setWinner(outeritem[innerindex])
+          props.setWinnerCb(outeritem[innerindex])
         }
         if (position[outerindex][innerindex] && position[0][0] === position[1][1] && position[0][0] === position[2][2]) {
-          setWinner(position[0][0])
+          props.setWinnerCb(position[0][0])
         }
         if (position[outerindex][innerindex] && position[0][2] === position[1][1] && position[0][2] === position[2][0]) {
-          setWinner(position[0][2])
+          props.setWinnerCb(position[0][2])
         }
       })
     })
@@ -65,15 +67,12 @@ const TicTacToe = () => {
       [null, null, null],
       [null, null, null],
     ])
-    setWinner("")
-    setUser("X")
+    props.setWinnerCb("")
+    props.parentCallback("X")
   }
   return (
     <div className="container">
-      <div className="output">
-        <p> Next player: {winner ? `-` : user}</p>
-        <p> Winner: {winner}</p>
-      </div>
+      
       <div className="board">
         {position.map((row, rowIndex) =>
           row.map((column, columnIndex) => (

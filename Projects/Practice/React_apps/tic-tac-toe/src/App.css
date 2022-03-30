@@ -25,3 +25,12 @@
 .resetbtn {
   margin-top: 20px;
 }
+.header {
+  display: flex;
+  padding: 20px;
+  border: 2px solid red;
+  margin-bottom: 30px;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+}
