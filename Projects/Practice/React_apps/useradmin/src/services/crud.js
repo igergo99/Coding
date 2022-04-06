@@ -1,5 +1,7 @@
 import {database} from "../config/firebase"
 import {ref,set,push,get ,update,remove} from "firebase/database"
+import { onChildAdded, onChildChanged, onChildRemoved } from 'firebase/database';
+
 const endpoint="users"
 
 export function createUser(userdata){
@@ -25,4 +27,22 @@ export function updateUser(key, userData){
 export function deleteUser(key){
     const refUser=ref(database,`${endpoint}/${key}`)
     return remove(refUser)
+}
+export function liveRemoved(callback) {
+    const refUser = ref(database, endpoint);
+    return onChildRemoved(refUser, callback)
+  }
+  
+  export function liveAdded(callback) {
+    const refUser = ref(database, endpoint)
+    return onChildAdded(refUser, callback)
+  }
+  
+  export function liveChanged(callback) {
+    const refUser = ref(database, endpoint);
+    return onChildChanged(refUser, callback)
+  }
+  export function readChatUser( endpoint){
+    const refUser=ref(database,endpoint)
+    return get(refUser)
 }
