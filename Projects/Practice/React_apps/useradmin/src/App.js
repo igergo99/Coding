@@ -2,7 +2,6 @@
 import './App.css';
 import{createUser}from './services/crud'
 import {useEffect} from 'react'
-
 import UserManagement from './views/UserManagement'
 function App() {
  /*  useEffect(()=>{
@@ -18,6 +17,7 @@ function App() {
   return (
     <div className="App">
       <UserManagement/>
+      
     </div>
   );
 }
