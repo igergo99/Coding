@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+}
+li {
+  display: initial;
+  padding: 20px;
+}
+ul {
+  display: inline;
+}
+.active {
+  background-color: red;
+  color: wheat;
+}
