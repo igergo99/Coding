@@ -11,16 +11,16 @@ const BlogScreen = () => {
         get(refBlog)
         .then(snapshot=>{setBlogData(Object.entries(snapshot.val()))})
         .catch(e=>console.log(e))
-        console.log(blogData)
+        
     },[])
     return (
         <div className="blog">
             <div>
-            {blogData.map((item, index) => {
+            {blogData.map((item) => {
                 const key=item[0]
                 const data=item[1]
                 return (<>
-                    <article key={key}>
+                    <article key={`article_${key}`}>
                         <h2>{data?.title}</h2>
                         <p>{data?.lead}</p>
                         <Link to={`/blogposts/${key}`}>{data?.lead}</Link>
@@ -34,10 +34,10 @@ const BlogScreen = () => {
                 const key=item[0]
                 const data=item[1]
                 return (
-                    <>
+                    <div key={`latest_${key}`}>
                     
-                    <Link to={`/blogposts/${key}`}>{data?.title}</Link>
-                    </>
+                        <Link to={`/blogposts/${key}`}>{data?.title}</Link>
+                    </div>
                
                 );
             })}

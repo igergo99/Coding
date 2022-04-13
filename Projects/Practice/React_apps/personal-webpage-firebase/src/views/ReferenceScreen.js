@@ -14,7 +14,7 @@ const ReferenceScreen = () => {
         .catch(e=>console.log(e))
         
     },[])
-    console.log(referenceData)
+   
     return (
       
         <div>

@@ -24,3 +24,15 @@ li {
   display: flex;
   flex-direction: column;
 }
+.box {
+  border: 1px solid black;
+  width: 450px;
+  display: flex;
+  padding: 40px 20px;
+  flex-direction: column;
+}
+.profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
