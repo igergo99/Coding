@@ -1,33 +1,32 @@
 import { useParams } from "react-router-dom";
+import { database } from "../../config/firebase"; 
+import { useEffect,useState } from "react";
+import {ref,get} from 'firebase/database'
+
+
 
 const Reference = () => {
     const { reference_id } = useParams();
+    const endpoint=`mxn/references/${reference_id}`;
+    const[target,setTarget]= useState(null)
 
-    const db = [
-        {
-            id: 'webshop',
-            text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-            link: 'https://www.emag.hu/'
-        },
-        {
-            id: 'pmachat',
-            text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-            link: 'https://progmatic.hu/'
-        },
-        {
-            id: 'valami',
-            text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-            link: 'https://www.placecage.com'
-        },
-    ];
-    const target = db.filter((item) => item.id === reference_id);
+   useEffect(()=>{
+    const refReference=ref(database,endpoint)
+    get(refReference)
+    .then(snapshot=>{setTarget(snapshot.val())})
+    
+    .catch(e=>console.log(e))
+    
+   },[reference_id])
+   console.log(target)
 
     return (
         <div>
-        {target[0] && (<>
-            <h2>{target[0].id}</h2>
-            <p>{target[0].text}</p>
-            <a href={target[0].link}>Click here</a>
+        {target && 
+        (<>
+            <h2>{target?.name}</h2>
+            <p>{target?.description}</p>
+            <a href={target?.img}>Click here</a>
         </>)}
         </div>
     )

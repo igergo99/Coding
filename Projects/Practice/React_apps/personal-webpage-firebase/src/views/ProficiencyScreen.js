@@ -13,6 +13,7 @@ const ProficiencyScreen = () => {
         get(refKnowledge)
         .then(snapshot=>{setKnowledgeData(Object.entries(snapshot.val()))})
         .catch(e=>console.log(e))
+        console.log(knowledgeData)
     },[])
 
     return (
