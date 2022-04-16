@@ -1,10 +1,10 @@
 import React from 'react'
 import { Outlet } from 'react-router'
 import Navbar from '../components/Navbar'
-export default function MainLayout() {
+export default function MainLayout({userLogged}) {
   return (
     <div>
-        <Navbar/>
+        <Navbar userLogged={userLogged}/>
         <Outlet/>
     </div>
   )

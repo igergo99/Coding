@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
 
-const Navbar = () => {
+const Navbar = ({ userLogged }) => {
     return (
         <>
             <ul>
@@ -9,7 +9,9 @@ const Navbar = () => {
                 <li><NavLink to='/proficiency/'>Proficiency</NavLink></li>
                 <li><NavLink to='/reference'>Reference</NavLink></li>
                 <li><NavLink to='/blogposts'>Blog</NavLink></li>
-                <li><NavLink to='/login'>Log In</NavLink></li>
+                <li>
+                    {!userLogged?<NavLink to='/login'>Log In</NavLink>:<NavLink to='/profile'>Profile</NavLink>}
+                </li>
                 {/* <li><NavLink to='/prices'>Prices</NavLink></li>
                 <li><NavLink to='/contact'>Contact Me</NavLink></li>
                 <li><NavLink to='/registration'>Registration</NavLink></li>

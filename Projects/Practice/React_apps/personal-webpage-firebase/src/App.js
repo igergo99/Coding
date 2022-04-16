@@ -17,6 +17,8 @@ import PasswordReset from './components/PasswordReset';
 import LoginLayout from './layouts/LoginLayout';
 import ProfileLayout from './layouts/ProfileLayout';
 import Profile from './components/Profile';
+import NewPost from './components/NewPost'
+
 
 import{auth} from './config/firebase'
 import{onAuthStateChanged} from 'firebase/auth'
@@ -35,7 +37,7 @@ function App() {
   return (
     <div className="App">
             <Routes>
-                <Route element={<MainLayout/>}>
+                <Route element={<MainLayout userLogged={userLogged}/>}>
                   <Route path='/' element={ <AboutScreen /> }/>
                   <Route path='/about' element={ <AboutScreen /> }/>
                   <Route path='/proficiency' element={ <ProficiencyScreen /> }/>
@@ -50,11 +52,9 @@ function App() {
                   <Route path="/passwordreset" element={<PasswordReset/>}/>
                 </Route>
                 {userLogged&&
-                
                   <Route element={<ProfileLayout setUserLogged={setUserLogged}/>}>
-                  <Route path="/profile" element={<Profile/>}/>
-                  
-                 
+                    <Route path="/profile" element={<Profile/>}/>
+                    <Route path="/newpost" element={<NewPost/>}/>
                 </Route>}
                 {/* <Route path='/prices' element={ <PricesScreen /> }/>
                 <Route path='/contact' element={ <ContactScreen /> }/>
