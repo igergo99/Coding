@@ -34,12 +34,12 @@ export default function Login() {
     .catch(e=>setLoginError(e.message))
   }
   return (
-    <>
+    <div className="box">
         {loginError}
-        <input type="text" onChange={emailchangeHandler}></input>
-        <input type="text" onChange={pwchangeHandler}></input>
-        <button onClick={loginHandler}>Log in!</button>
+        E-mail:<input type="text" onChange={emailchangeHandler}></input><br/>
+        Jelszó:<input type="text" onChange={pwchangeHandler}></input><br/>
+        <button onClick={loginHandler}>Log in!</button><br/>
         <button onClick={signupHandler}>Sign up!</button>
-    </>
+    </div>
   )
 }

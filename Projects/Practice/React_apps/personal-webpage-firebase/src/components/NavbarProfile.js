@@ -6,7 +6,7 @@ import { auth } from '../config/firebase'
 
 export default function NavbarProfile({setUserLogged}) {
   return (
-    <div>
+    <div className="profile-navbar">
         <ul>
         <li><NavLink to="/">Vissza a Főmenübe</NavLink></li>    
         <li><NavLink to="/profile">Adatlap</NavLink></li>

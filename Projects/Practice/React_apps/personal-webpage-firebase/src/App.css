@@ -33,6 +33,26 @@ li {
 }
 .profile {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
+}
+.main-navbar {
+  background-color: lightskyblue;
+  box-sizing: border-box;
+  padding: 10px;
+  color: azure;
+  margin-bottom: 20px;
+}
+.profile-navbar {
+  background-color: lightskyblue;
+  box-sizing: border-box;
+  padding: 10px;
+  color: azure;
+  margin-bottom: 20px;
+}
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }

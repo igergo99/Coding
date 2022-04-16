@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const Navbar = ({ userLogged }) => {
     return (
-        <>
+        <div className="main-navbar">
             <ul>
                 <li><NavLink to='/about'>About Me</NavLink></li>
                 <li><NavLink to='/proficiency/'>Proficiency</NavLink></li>
@@ -17,7 +17,7 @@ const Navbar = ({ userLogged }) => {
                 <li><NavLink to='/registration'>Registration</NavLink></li>
                 <li><NavLink to='/signin'>Sign In</NavLink></li>           */}
             </ul>
-        </>
+        </div>
     );
 };
 
