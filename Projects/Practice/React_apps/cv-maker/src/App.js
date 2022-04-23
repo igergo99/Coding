@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route element={<MainLayout/>}>
-          <Route path="/cvmaker" element={<CvMakerView/>}/>
+          <Route path="/" element={<CvMakerView/>}/>
           <Route path="/cvs" element={<CvListView/>}/>
         </Route>
       </Routes>
